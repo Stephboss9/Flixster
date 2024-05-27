@@ -27,7 +27,7 @@ type NavigationProps = {
     apiClient: ApiClient;
 }
 
-const Navigation = ({ setMovies, setPage, setMovieListCategory, setSearchQuery}: NavigationProps) => {
+const Navigation = ({ setMovies, setPage, setMovieListCategory, setSearchQuery }: NavigationProps) => {
     const [isTyping, setIsTyping] = useState(false);
     const [userInput, setUserInput] = useState("");
 
@@ -52,7 +52,6 @@ const Navigation = ({ setMovies, setPage, setMovieListCategory, setSearchQuery}:
         window.scrollTo(0, 0);
         setMovieListCategory(movieListCategory);
         setSearchQuery("")
-        setMovies([]);
         setPage(1);
     }
 

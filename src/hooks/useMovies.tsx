@@ -29,9 +29,16 @@ export const useMovies = ({ page, movieListCategory, api, searchQuery = '', setM
         api.getMovies(page, movieListCategory, searchQuery).then(result => {
             newMovies = result.data;
             setMovies(prevMovies => {
-                // Filter out duplicate movies based on some unique identifier (e.g., ID)
-                const uniqueNewMovies = newMovies.filter(newMovie => !prevMovies.some(prevMovie => prevMovie.id === newMovie.id));
-                return [...prevMovies, ...uniqueNewMovies];
+                /*
+                handles when the same navbar link (movie list category) is clicked twice
+                and when movies belonging to a different category are requested 
+                */
+
+                if (page === 1)
+                    return [...newMovies];
+                else
+                    return [...prevMovies, ...newMovies];
+
             });
             setHasNextPage(Boolean(newMovies.length));
             setIsLoading(false);
